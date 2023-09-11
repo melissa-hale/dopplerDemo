@@ -24,6 +24,6 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Frontend server started on http://${RAILWAY_PUBLIC_DOMAIN}:${port}`);
+    console.log(`Frontend server started on http://${process.env.RAILWAY_PUBLIC_DOMAIN}:${port}`);
 });
 
