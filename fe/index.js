@@ -4,14 +4,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/fetch-secret', async (req, res) => {
-    axios.get('http://backend.railway.internal:5685/secret')
+    axios.get('http://backend.railway.internal:3000/secret')
     .then(response => {
         res.json(response.data);
     })
     .catch(error => {
         if (error.response) {
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
             console.log("Data:", error.response.data);
             console.log("Status:", error.response.status);
             console.log("Headers:", error.response.headers);
@@ -25,13 +23,6 @@ app.get('/fetch-secret', async (req, res) => {
             console.log("Error:", error.message);
         }
     })
-    // try {
-    //     const response = await axios.get(`http://backend.railway.internal:${port}/secret`);
-    //     res.json(response.data);
-    // } catch (error) {
-    //     console.error('Error fetching secret from backend:', error);
-    //     res.status(500).send("Error fetching secret");
-    // }
 });
 
 app.get('/', async (req, res) => {
@@ -54,7 +45,7 @@ app.get('/', async (req, res) => {
     `);
 });
 
-app.listen(port, '::', () => {
+app.listen(port, () => {
     console.log(`Railway public domain: ${process.env.RAILWAY_PUBLIC_DOMAIN}`)
     console.log(`Frontend server started on ::${port}`);
 });
