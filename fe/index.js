@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 app.get('/fetch-secret', async (req, res) => {
     try {
-        const response = await axios.get('backend.railway.internal/secret');
+        const response = await axios.get(`backend.railway.internal:${port}/secret`);
         res.json(response.data);
     } catch (error) {
         console.error('Error fetching secret from backend:', error);
