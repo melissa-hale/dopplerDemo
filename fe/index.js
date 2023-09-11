@@ -4,13 +4,34 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/fetch-secret', async (req, res) => {
-    try {
-        const response = await axios.get(`http://backend.railway.internal:${port}/secret`);
+    axios.get('http://backend.railway.internal:5685/secret')
+    .then(response => {
         res.json(response.data);
-    } catch (error) {
-        console.error('Error fetching secret from backend:', error);
-        res.status(500).send("Error fetching secret");
-    }
+    })
+    .catch(error => {
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log("Data:", error.response.data);
+            console.log("Status:", error.response.status);
+            console.log("Headers:", error.response.headers);
+        } else if (error.request) {
+            // The request was made but no response was received
+            console.log("Request:", error.request);
+            res.status(500).send("Error fetching secret");
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            res.status(500).send("Error fetching secret");
+            console.log("Error:", error.message);
+        }
+    })
+    // try {
+    //     const response = await axios.get(`http://backend.railway.internal:${port}/secret`);
+    //     res.json(response.data);
+    // } catch (error) {
+    //     console.error('Error fetching secret from backend:', error);
+    //     res.status(500).send("Error fetching secret");
+    // }
 });
 
 app.get('/', async (req, res) => {
