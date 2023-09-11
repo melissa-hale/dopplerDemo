@@ -33,7 +33,7 @@ app.get('/', async (req, res) => {
     `);
 });
 
-app.listen(port, () => {
+app.listen(port, '::', () => {
     console.log(`Railway public domain: ${process.env.RAILWAY_PUBLIC_DOMAIN}`)
-    console.log(`Frontend server started on port: ${port}`);
+    console.log(`Frontend server started on ::${port}`);
 });

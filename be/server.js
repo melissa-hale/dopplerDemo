@@ -20,8 +20,8 @@ setInterval(async () => {
     }
 }, 60000);
 
-app.listen(port, () => {
+app.listen(port, '::', () => {
     console.log('Railway private domain: ', process.env.RAILWAY_PRIVATE_DOMAIN)
-    console.log(`Backend server started on port: ${port}`);
+    console.log(`Backend server started on  ::${port}`);
 });
 
