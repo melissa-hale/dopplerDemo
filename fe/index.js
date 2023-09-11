@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 app.get('/fetch-secret', async (req, res) => {
     try {
-        const response = await axios.get('be.railway.internal/secret');
+        const response = await axios.get('backend.railway.internal/secret');
         res.json(response.data);
     } catch (error) {
         console.error('Error fetching secret from backend:', error);
@@ -34,6 +34,6 @@ app.get('/', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Frontend server started on http://${process.env.RAILWAY_PUBLIC_DOMAIN}:${port}`);
+    console.log(`Railway public domain: ${process.env.RAILWAY_PUBLIC_DOMAIN}`)
+    console.log(`Frontend server started on port: ${port}`);
 });
-
