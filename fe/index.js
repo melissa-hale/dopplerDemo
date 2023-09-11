@@ -3,6 +3,16 @@ const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.get('/fetch-secret', async (req, res) => {
+    try {
+        const response = await axios.get('be.railway.internal/secret');
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching secret from backend:', error);
+        res.status(500).send("Error fetching secret");
+    }
+});
+
 app.get('/', async (req, res) => {
     res.send(`
         <h1>Secret Rotation Demo</h1>
@@ -11,7 +21,8 @@ app.get('/', async (req, res) => {
         <script>
             async function fetchSecret() {
                 try {
-                    const response = await fetch('agonizing-crate.railway.internal/secret');
+                    const response = await fetch('/fetch-secret');
+                    console.log(response)
                     const data = await response.json();
                     document.getElementById('secretDisplay').textContent = data.secret;
                 } catch (error) {

@@ -21,6 +21,7 @@ setInterval(async () => {
 }, 60000);
 
 app.listen(port, () => {
-    console.log(`Backend server started on http://${process.env.RAILWAY_PRIVATE_DOMAIN}:${port}`);
+    console.log('Railway private domain: ', process.env.RAILWAY_PRIVATE_DOMAIN)
+    console.log(`Backend server started on port: ${port}`);
 });
 
