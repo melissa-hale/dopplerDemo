@@ -2,7 +2,6 @@ const express = require('express');
 const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 3000;
-const bePort = process.env.BE_PORT || 3001;
 
 app.get('/', async (req, res) => {
     res.send(`
@@ -12,7 +11,7 @@ app.get('/', async (req, res) => {
         <script>
             async function fetchSecret() {
                 try {
-                    const response = await fetch('be.railway.internal:${bePort}/secret');
+                    const response = await fetch('agonizing-crate.railway.internal/secret');
                     const data = await response.json();
                     document.getElementById('secretDisplay').textContent = data.secret;
                 } catch (error) {
