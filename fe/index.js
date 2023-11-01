@@ -16,7 +16,7 @@ app.get('/fetch-secret', async (req, res) => {
         } else if (error.request) {
             // The request was made but no response was received
             console.log("Request:", error.request);
-            res.status(500).send("Error fetching secret");
+            res.status(500).send("Error fetching secret!");
         } else {
             // Something happened in setting up the request that triggered an Error
             res.status(500).send("Error fetching secret!");
