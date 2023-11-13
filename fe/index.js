@@ -19,7 +19,7 @@ app.get('/fetch-secret', async (req, res) => {
             res.status(500).send("Error fetching secret!");
         } else {
             // Something happened in setting up the request that triggered an Error
-            res.status(500).send("Error fetching secret!");
+            res.status(500).send("Error fetching secret!!!");
             console.log("Error:", error.message);
         }
     })
