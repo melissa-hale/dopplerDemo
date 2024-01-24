@@ -49,3 +49,5 @@ app.listen(port, () => {
     console.log(`Railway public domain: ${process.env.RAILWAY_PUBLIC_DOMAIN}`)
     console.log(`Frontend server started on ::${port}`);
 });
+
+console.log('somechange')
