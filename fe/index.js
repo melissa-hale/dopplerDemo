@@ -3,6 +3,8 @@ const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 3000;
 
+console.log('thing')
+
 app.get('/fetch-secret', async (req, res) => {
     axios.get('http://backend.railway.internal:3000/secret')
     .then(response => {
