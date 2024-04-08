@@ -9,6 +9,10 @@ app.get('/secret', (req, res) => {
     res.json({ secret });
 });
 
+app.get('/', (req, res) => {
+    res.send('hello!');
+});
+
 setInterval(async () => {
     try {
         secret = process.env.API_KEY;
