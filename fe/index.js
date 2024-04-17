@@ -27,7 +27,7 @@ app.get('/fetch-secret', async (req, res) => {
 
 app.get('/', async (req, res) => {
     res.send(`
-        <h1>Secret Rotation Demo 4</h1>
+        <h1>Secret Rotation Demo 5</h1>
         <button onclick="fetchSecret()">Get Secret</button>
         <div id="secretDisplay"></div>
         <script>
