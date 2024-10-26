@@ -10,7 +10,7 @@ app.get('/secret', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('hello!');
+    res.send('helloo00o!');
 });
 
 setInterval(async () => {
